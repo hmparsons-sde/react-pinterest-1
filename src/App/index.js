@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 
 function App() {
@@ -28,10 +28,10 @@ function App() {
 
   return (
     <div className='App'>
-      <Router>
+      {/* <Router> */}
         <NavBar user={user} />
         {/* <Routes user={user} /> */}
-      </Router>
+      {/* </Router> */}
     </div>
   );
 }
