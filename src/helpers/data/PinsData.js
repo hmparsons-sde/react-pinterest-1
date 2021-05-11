@@ -77,7 +77,7 @@ const getPublicPins = () => new Promise((resolve, reject) => {
 // ADD PUBLIC PINS
 const addPublicPin = (firebaseKey, pinObject) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/pins/${firebaseKey}.json`, pinObject)
-    .then(() => publicPins().then((pinsArray) => resolve(pinsArray)))
+    .then(() => getPublicPins().then((pinsArray) => resolve(pinsArray)))
     .catch((error) => reject(error));
 });
 
