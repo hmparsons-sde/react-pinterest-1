@@ -69,11 +69,6 @@ const searchPins = (uid, searchValue) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 // PUBLIC PINS
-const publicPins = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/pins.json?orderBy="public"&equalTo=true`)
-    .then((response) => resolve(Object.values(response.data)))
-    .catch((error) => reject(error));
-});
 const getPublicPins = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/pins.json?orderBy="public"&equalTo=true`)
     .then((response) => resolve(Object.values(response.data)))
@@ -95,7 +90,6 @@ export {
   getBoardPins,
   getFavoritePins,
   searchPins,
-  publicPins,
   addPublicPin,
   getPublicPins
 };
