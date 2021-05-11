@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 // import { BrowserRouter as Router } from 'react-router-dom';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/Navigation/NavBar';
 
 function App() {
   const [user, setUser] = useState(null);
