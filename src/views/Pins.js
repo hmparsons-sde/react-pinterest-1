@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PinCard from '../components/Cards/PinCard';
+import PinForm from '../components/Forms/PinForm';
 
 export default function PinView({ user, pins, setPins }) {
   return (
@@ -15,7 +16,14 @@ export default function PinView({ user, pins, setPins }) {
           />
         ))}
       </div>
-    </>
+    <div>
+      <PinForm
+        formTitle='Add Pin'
+        setPins={setPins}
+        user={user}
+      />
+    </div>
+  </>
   );
 }
 

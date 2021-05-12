@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BoardForm from '../components/BoardForm';
+import BoardForm from '../components/Forms/BoardForm';
 
 export default function Boards({ user }) {
   return (
