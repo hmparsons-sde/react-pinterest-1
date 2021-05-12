@@ -1,83 +1,61 @@
 import React, { useState } from 'react';
-import {
-  Button, Form, FormGroup, Input
-} from 'reactstrap';
 import PropTypes from 'prop-types';
-import { createPin, updatePin } from '../../helpers/data/PinsData';
+import { Button } from 'reactstrap';
+import { createPin } from '../../helpers/data/PinsData';
 
-const PinForm = ({
-  formTitle,
-  setPins,
-  user,
-  ...pinObj
-}) => {
+export default function PinForm({
+  user, formTitle, setPins
+}) {
   const [pin, setPin] = useState({
-    imageUrl: pinObj?.imageUrl || '',
-    name: pinObj?.name || '',
-    url: pinObj?.url || '',
-    firebaseKey: pinObj?.firebaseKey || null,
-    uid: pinObj?.uid || user.uid
+    title: '',
+    imageUrl: '',
+    uid: user.uid
   });
 
   const handleInputChange = (e) => {
     setPin((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (pin.firebaseKey) {
-      updatePin(pin, pinObj.uid).then((pinsArray) => setPins(pinsArray));
-    } else {
-      createPin(pin, user.uid).then((pinsArray) => setPins(pinsArray));
-    }
+    createPin(pin, user.uid).then((pinsArray) => setPins(pinsArray));
   };
 
   return (
-    <div className='pin-form'>
-      <Form id='createPinForm' autoComplete='off' onSubmit={handleSubmit}>
-        <h2>{formTitle}</h2>
-        <FormGroup>
-          <Input
-            name='name'
-            id='name'
-            value={pin.url}
-            type='text'
-            placeholder='Name your pin'
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup>
-         <Input
-            name='imageUrl'
-            type='text'
-            placeholder='Enter an Image URL'
-            value={pin.imageUrl}
-            onChange={handleInputChange}
-          ></Input>
-        </FormGroup>
-        <FormGroup>
-          <Input
-            name='url'
-            id='url'
-            value={pin.url}
-            type='text'
-            placeholder='Enter an Article Title'
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <Button className='m-2 btn-lg' type='submit'>Submit</Button>
-      </Form>
+    <div className='pin-form-container'>
+      <form
+        className='add-pin-form'
+        autoComplete='off'
+      >
+        <h1>{formTitle}</h1>
+        <input
+          name='title'
+          type='text'
+          placeholder='Title'
+          value={pin.title}
+          onChange={handleInputChange}
+        >
+        </input><br></br>
+        <input
+          name='imageUrl'
+          type='url'
+          placeholder='Image URL'
+          value={pin.imageUrl}
+          onChange={handleInputChange}
+          className="mt-2"
+        >
+        </input><br></br>
+        <Button color="danger" type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
+      </form>
     </div>
   );
-};
+}
 
 PinForm.propTypes = {
+  user: PropTypes.any,
   formTitle: PropTypes.string,
-  setPins: PropTypes.func,
-  user: PropTypes.uid
+  setPins: PropTypes.func
 };
-
-export default PinForm;
