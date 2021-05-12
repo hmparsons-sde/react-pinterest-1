@@ -18,8 +18,22 @@ const PinCard = ({
   const [updating, setUpdating] = useState(false);
   const history = useHistory();
 
+  const handleClick = (type) => {
+    switch (type) {
+      case 'delete':
+        deletePin(firebaseKey, uid)
+          .then(setPins);
+        break;
+      case 'update':
+        setUpdating((prevState) => !prevState);
+        break;
+      default:
+        console.warn('nothing selected');
+    }
+  };
 
-  <Card body>
+  return (
+    <Card body>
       <CardImg id="pinImg" src={imageUrl} alt="pin cover photo"></CardImg>
       <CardSubtitle tag="h5">{title}</CardSubtitle>
       <CardText>{favorite}</CardText>
@@ -36,8 +50,10 @@ const PinCard = ({
         uid={uid}
         imageUrl={imageUrl}
         title={title}
+        />
       }
-  </Card>
+    </Card>
+  );
 };
 
 PinCard.propTypes = {
