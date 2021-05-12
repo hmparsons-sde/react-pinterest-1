@@ -5,10 +5,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/Navigation/NavBar';
 import Routes from '../helpers/Routes';
 import { getPins } from '../helpers/data/PinsData';
+import { getBoards } from '../helpers/data/BoardsData';
 
 function App() {
   const [user, setUser] = useState(null);
   const [pins, setPins] = useState([]);
+  const [boards, setBoards] = useState([]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -19,6 +21,7 @@ function App() {
           uid: authed.uid,
           user: authed.email.split('@')[0],
         };
+        getBoards(authed.uid).then((boardsArray) => setBoards(boardsArray));
         getPins(authed.uid).then((pinsArray) => setPins(pinsArray));
         setUser(userInfoObj);
       } else if (user || user === null) {
@@ -32,6 +35,8 @@ function App() {
       <Router>
         <NavBar user={user} />
         <Routes
+        boards={boards}
+        setBoards={setBoards}
         pins={pins}
         setPins={setPins}
         user={user}
