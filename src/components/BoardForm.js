@@ -32,24 +32,24 @@ export default function BoardForm({ user, formTitle }) {
       >
         <h1>{formTitle}</h1>
         <label>Title:</label>
-          <input
-            name='title'
-            type='text'
-            placeholder='Title'
-            value={board.title}
-            onChange={handleInputChange}
-          >
-          </input>
-          <label>Image URL</label>
-          <input
-            name='imageUrl'
-            type='url'
-            placeholder='Image URL'
-            value={board.imageUrl}
-            onChange={handleInputChange}
-          >
-          </input>
-          <Button color="danger" type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
+        <input
+          name='title'
+          type='text'
+          placeholder='Title'
+          value={board.title}
+          onChange={handleInputChange}
+        >
+        </input>
+        <label>Image URL</label>
+        <input
+          name='imageUrl'
+          type='url'
+          placeholder='Image URL'
+          value={board.imageUrl}
+          onChange={handleInputChange}
+        >
+        </input>
+        <Button color="danger" type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
       </form>
     </div>
   );
