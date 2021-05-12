@@ -9,6 +9,7 @@ export default function PinForm({
   const [pin, setPin] = useState({
     title: '',
     imageUrl: '',
+    favorite: false,
     uid: user.uid
   });
 
@@ -48,6 +49,14 @@ export default function PinForm({
           className="mt-2"
         >
         </input><br></br>
+        <input
+            name="favorite"
+            type="checkbox"
+            checked={pin.favorite}
+            onChange={handleInputChange}
+            className="mt-2"
+          ></input><label> Favorite </label>
+          <br></br>
         <Button color="danger" type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
       </form>
     </div>
@@ -57,5 +66,6 @@ export default function PinForm({
 PinForm.propTypes = {
   user: PropTypes.any,
   formTitle: PropTypes.string,
+  favorite: PropTypes.bool,
   setPins: PropTypes.func
 };
