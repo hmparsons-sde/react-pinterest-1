@@ -64,7 +64,7 @@ const BoardCard = ({
 <Card body>
       <CardImg id="pinImg" src={imageUrl}></CardImg>
       <CardSubtitle tag="h5">{title}</CardSubtitle>
-      <Button color="info" onClick={() => handleClick('view')}>Delete Board</Button>
+      <Button color="info" onClick={() => handleClick('view')}>View Pins</Button>
       <Button color="danger" onClick={() => handleClick('delete')}>Delete Board</Button>
   </Card>
 );
