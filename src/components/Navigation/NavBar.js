@@ -21,17 +21,17 @@ const NavBar = ({ user }) => {
     <>
       <NavItem>
         <Link className='nav-link' to='/boards'>
-          Add Player
+          Boards
         </Link>
       </NavItem>
       <NavItem>
         <Link className='nav-link' to='/pins'>
-          Team
+          Pins
         </Link>
       </NavItem>
       <NavItem>
         <Link className='nav-link' to='/favorites'>
-          Add Player
+          Favorites
         </Link>
       </NavItem>
     </>
