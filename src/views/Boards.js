@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BoardCard from '../components/Cards/BoardCard';
-import BoardForm from '../components/BoardForm';
+import BoardForm from '../components/Forms/BoardForm';
 
 function BoardsView({ user, boards, setBoards }) {
   return (
