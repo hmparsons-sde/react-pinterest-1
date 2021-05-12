@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { createBoard } from '../helpers/data/BoardsData';
 
-export default function BoardForm({ user }) {
+export default function BoardForm({ user, formTitle }) {
   const [board, setBoard] = useState({
     title: '',
     imageUrl: '',
@@ -17,33 +17,20 @@ export default function BoardForm({ user }) {
     }));
   };
 
-  const handleClick = (type) => {
-    switch (type) {
-      case 'add-board':
-        createBoard(board, user.uid).then((boardsArray) => (boardsArray));
-        break;
-      default:
-        console.warn('no');
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     createBoard(board, user.uid).then((boardsArray) => console.warn(boardsArray));
-    // above console warn to be setBoard when board cards can be READ
-    // boards are printing to Firebase
+    // above console.warn to be setBoard when board cards can be READ
+    // boards with uids are printing to Firebase
   };
 
   return (
     <div className='board-form-container'>
-      <Button color="secondary" onClick={() => handleClick('add-board')}>
-          {board ? 'add-board' : 'Close Form' }
-      </Button>
       <form
         className='add-board-form'
         autoComplete='off'
       >
-        <h1>Add New Board</h1>
+        <h1>{formTitle}</h1>
         <label>Title:</label>
           <input
             name='title'
@@ -69,5 +56,6 @@ export default function BoardForm({ user }) {
 }
 
 BoardForm.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  formTitle: PropTypes.string
 };

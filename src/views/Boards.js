@@ -6,7 +6,10 @@ export default function Boards({ user }) {
   return (
     <div>
       <h1>Boards</h1>
-      <BoardForm user={user} />
+      <BoardForm
+        user={user}
+        formTitle='Add a Board'
+      />
     </div>
   );
 }
