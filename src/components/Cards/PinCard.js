@@ -1,5 +1,4 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import {
   Button,
   Card,
@@ -8,20 +7,24 @@ import {
   CardText
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { deletePin } from '../../helpers/data/PinsData';
+import PinForm from '../Forms/PinForm';
 
 const PinCard = ({
   imageUrl,
   title,
   favorite,
-  handleClick
+  firebaseKey,
+  user,
+  setPins,
+  boardId
 }) => {
   const [updating, setUpdating] = useState(false);
-  const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deletePin(firebaseKey, uid)
+        deletePin(firebaseKey, user.uid)
           .then(setPins);
         break;
       case 'update':
@@ -47,7 +50,7 @@ const PinCard = ({
         setPins={setPins}
         firebaseKey={firebaseKey}
         boardId={boardId}
-        uid={uid}
+        user={user}
         imageUrl={imageUrl}
         title={title}
         />
@@ -60,7 +63,11 @@ PinCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   favorite: PropTypes.bool,
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
+  firebaseKey: PropTypes.string,
+  user: PropTypes.any,
+  setPins: PropTypes.func,
+  boardId: PropTypes.string,
 };
 
 export default PinCard;
