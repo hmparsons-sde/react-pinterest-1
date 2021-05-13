@@ -20,8 +20,6 @@ export default function BoardForm({ user, formTitle, setBoards }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     createBoard(board, user.uid).then((boardsArray) => setBoards(boardsArray));
-    // above console.warn to be setBoard when board cards can be READ
-    // boards with uids are printing to Firebase
   };
 
   return (

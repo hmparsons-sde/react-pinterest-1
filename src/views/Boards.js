@@ -24,6 +24,7 @@ function BoardsView({ user, boards, setBoards }) {
       <BoardForm
         user={user}
         formTitle='Add a Board'
+        setBoards={setBoards}
       />
     </div>
     </>
