@@ -4,11 +4,12 @@ import { Button } from 'reactstrap';
 import { createPin, updatePin } from '../../helpers/data/PinsData';
 
 export default function PinForm({
-  user, formTitle, setPins
+  user, formTitle, setPins, title, imageUrl, firebaseKey
 }) {
   const [pin, setPin] = useState({
-    title: '',
-    imageUrl: '',
+    title: title || '',
+    imageUrl: imageUrl || '',
+    firebaseKey: firebaseKey || null,
     favorite: false,
     uid: user.uid
   });
@@ -71,5 +72,8 @@ PinForm.propTypes = {
   user: PropTypes.any,
   formTitle: PropTypes.string,
   favorite: PropTypes.bool,
-  setPins: PropTypes.func
+  setPins: PropTypes.func,
+  title: PropTypes.string,
+  imageUrl: PropTypes.string,
+  firebaseKey: PropTypes.string
 };
