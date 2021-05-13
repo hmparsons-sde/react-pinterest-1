@@ -57,7 +57,7 @@ export default function PinForm({
             className='mt-2'
           ></input><label> Favorite </label>
           <br></br>
-        <Button color='danger' type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
+        <Button color='danger' type='submit' onClick={handleSubmit} className='mt-2'>Submit</Button>
       </form>
     </div>
   );

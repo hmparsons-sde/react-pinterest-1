@@ -17,7 +17,7 @@ const PinCard = ({
   <Card body>
       <CardImg id="pinImg" src={imageUrl} alt="pin cover photo"></CardImg>
       <CardSubtitle tag="h5" className="mt-2">{title}</CardSubtitle>
-      <CardText>{favorite}</CardText>
+      <CardText>{favorite ? 'Favorite' : ''}</CardText>
       <Button color="danger" onClick={() => handleClick('delete')}>Delete Pin</Button>
   </Card>
 );
