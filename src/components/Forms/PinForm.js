@@ -16,7 +16,7 @@ export default function PinForm({
   const handleInputChange = (e) => {
     setPin((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.name === 'favorite' ? e.target.checked : e.target.value
     }));
   };
 
@@ -46,18 +46,18 @@ export default function PinForm({
           placeholder='Image URL'
           value={pin.imageUrl}
           onChange={handleInputChange}
-          className="mt-2"
+          className='mt-2'
         >
         </input><br></br>
         <input
-            name="favorite"
-            type="checkbox"
+            name='favorite'
+            type='checkbox'
             checked={pin.favorite}
             onChange={handleInputChange}
-            className="mt-2"
+            className='mt-2'
           ></input><label> Favorite </label>
           <br></br>
-        <Button color="danger" type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
+        <Button color='danger' type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
       </form>
     </div>
   );
