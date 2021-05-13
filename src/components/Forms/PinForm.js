@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
-import { createPin } from '../../helpers/data/PinsData';
+import { createPin, updatePin } from '../../helpers/data/PinsData';
 
 export default function PinForm({
   user, formTitle, setPins
@@ -22,7 +22,11 @@ export default function PinForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createPin(pin, user.uid).then((pinsArray) => setPins(pinsArray));
+    if (pin.firebaseKey) {
+      updatePin(pin, user.uid).then((pinsArray) => setPin(pinsArray));
+    } else {
+      createPin(pin, user.uid).then((pinsArray) => setPins(pinsArray));
+    }
   };
 
   return (
