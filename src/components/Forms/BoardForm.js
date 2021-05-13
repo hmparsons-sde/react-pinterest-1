@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { createBoard } from '../../helpers/data/BoardsData';
 
-export default function BoardForm({ user, formTitle }) {
+export default function BoardForm({ user, formTitle, setBoards }) {
   const [board, setBoard] = useState({
     title: '',
     imageUrl: '',
@@ -19,7 +19,7 @@ export default function BoardForm({ user, formTitle }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createBoard(board, user.uid).then((boardsArray) => console.warn(boardsArray));
+    createBoard(board, user.uid).then((boardsArray) => setBoards(boardsArray));
     // above console.warn to be setBoard when board cards can be READ
     // boards with uids are printing to Firebase
   };
@@ -57,5 +57,6 @@ export default function BoardForm({ user, formTitle }) {
 
 BoardForm.propTypes = {
   user: PropTypes.any,
-  formTitle: PropTypes.string
+  formTitle: PropTypes.string,
+  setBoards: PropTypes.func
 };

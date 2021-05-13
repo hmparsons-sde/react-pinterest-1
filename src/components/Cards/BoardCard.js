@@ -16,6 +16,8 @@ const BoardCard = ({
   // setBoards,
   imageUrl,
   title,
+  setBoards,
+
   // setBoards,
   // }) => {
   //   const [editing, setEditing] = useState(false);
