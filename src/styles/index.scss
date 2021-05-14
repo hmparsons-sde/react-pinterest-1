@@ -1,6 +1,7 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
 @import 'pins';
+@import 'boards';
 
 body {
   background-color: $favColor;
@@ -8,12 +9,4 @@ body {
 
 h1 {
   text-align: center;
-}
-
-.add-board-form {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 20em;
-  padding: .5em;
 }

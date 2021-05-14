@@ -9,8 +9,6 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { deleteBoard } from '../../helpers/data/BoardsData';
-// import { deleteStudent } from '../helpers/data/StudentData';
-// import BoardForm from './BoardForm';
 
 function BoardCard({
   imageUrl,
