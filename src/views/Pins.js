@@ -12,16 +12,15 @@ export default function PinView({ user, pins, setPins }) {
   return (
     <>
     <section className="header">
-      <header className="h1">{user.fullName}</header>
       { !showButton
-        ? <Button color='info' onClick={handleClick}>Add Pin</Button>
+        ? <Button className="justify-content-center mt-3" color='danger' onClick={handleClick}>Add Pin</Button>
         : <div>
-        <Button color='info' onClick={handleClick}>Close</Button>
-          <PinForm setPins={setPins} user={user}/>
+        <Button className="justify-content-center mt-3" color='secondary' onClick={handleClick}>Close</Button>
+          <PinForm className="justify-content-center mt-3" setPins={setPins} user={user}/>
         </div>
         }
       </section>
-      <div className="card-container" id="pin-cards">
+      <div className="card-container align-content-center" id="pin-cards">
         {pins.map((pin) => (
           <PinCard
             key={pin.firebaseKey}
