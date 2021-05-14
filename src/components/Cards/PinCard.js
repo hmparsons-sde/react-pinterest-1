@@ -4,7 +4,9 @@ import {
   Card,
   Button,
   ButtonGroup,
-  CardImg
+  CardImg,
+  CardText,
+  CardSubtitle
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { deletePin } from '../../helpers/data/PinsData';
@@ -40,8 +42,8 @@ const PinCard = ({
       <Container>
         <Card body>
           <CardImg className="mx-auto d-block" id="pinImg" src={imageUrl} alt="pin cover photo"></CardImg>
-          <h5 className="mt-2">{title}</h5>
-          <text className="text-center mb-2">{favorite ? '❤️' : ''}</text>
+          <CardSubtitle className="h5 mt-2">{title}</CardSubtitle>
+          <CardText className="text-center mb-2">{favorite ? '❤️' : ''}</CardText>
           <ButtonGroup>
           <Button color="transparent" size="sm" onClick={() => handleClick('delete')}>🗑️</Button>
           <Button color="transparent" size="sm" onClick={() => handleClick('update')}>
