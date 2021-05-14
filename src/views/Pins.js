@@ -13,9 +13,9 @@ export default function PinView({ user, pins, setPins }) {
     <>
     <section className="header">
       { !showButton
-        ? <Button className="justify-content-center mt-3" color='danger' onClick={handleClick}>Add Pin</Button>
+        ? <Button className="m-3" color='danger' onClick={handleClick}>Add Pin</Button>
         : <div>
-        <Button className="justify-content-center mt-3" color='secondary' onClick={handleClick}>Close</Button>
+        <Button className="m-3" color='secondary' onClick={handleClick}>Close</Button>
           <PinForm className="justify-content-center mt-3" setPins={setPins} user={user}/>
         </div>
         }
