@@ -4,7 +4,9 @@ import { Button } from 'reactstrap';
 import PinCard from '../components/Cards/PinCard';
 import PinForm from '../components/Forms/PinForm';
 
-export default function PinView({ user, pins, setPins }) {
+export default function PinView({
+  user, pins, setPins, boards, setBoards
+}) {
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
     setShowButton((prevState) => !prevState);
@@ -16,7 +18,7 @@ export default function PinView({ user, pins, setPins }) {
         ? <Button className="m-2" color='danger' onClick={handleClick}>Add Pin</Button>
         : <div>
         <Button className="m-2" color='secondary' onClick={handleClick}>Close</Button>
-          <PinForm className="justify-content-center mt-3" setPins={setPins} user={user}/>
+          <PinForm className="justify-content-center mt-3" setPins={setPins} user={user} boards={boards} setBoards={setBoards}/>
         </div>
         }
       </section>
@@ -37,5 +39,7 @@ export default function PinView({ user, pins, setPins }) {
 PinView.propTypes = {
   pins: PropTypes.array,
   setPins: PropTypes.func,
-  user: PropTypes.any
+  user: PropTypes.any,
+  boards: PropTypes.array,
+  setBoards: PropTypes.func,
 };
