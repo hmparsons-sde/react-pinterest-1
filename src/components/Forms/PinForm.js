@@ -16,7 +16,7 @@ export default function PinForm({
   const handleInputChange = (e) => {
     setPin((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.name === 'favorite' ? e.target.checked : e.target.value
     }));
   };
 

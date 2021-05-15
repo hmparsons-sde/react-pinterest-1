@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  Card,
-  CardImg,
-  CardSubtitle,
-  CardText
-} from 'reactstrap';
 import PropTypes from 'prop-types';
+import { Button } from 'reactstrap';
 import { deletePin } from '../../helpers/data/PinsData';
 import PinForm from '../Forms/PinForm';
 
@@ -36,14 +30,17 @@ const PinCard = ({
   };
 
   return (
-    <Card body>
-      <CardImg id="pinImg" src={imageUrl} alt="pin cover photo"></CardImg>
-      <CardSubtitle tag="h5" className="mt-2">{title}</CardSubtitle>
-      <CardText>{favorite}</CardText>
-      <Button color="danger" onClick={() => handleClick('delete')}>Delete Pin</Button>
-      <Button color="info" onClick={() => handleClick('update')}>
+    <div className='card m-2 outline-dark'>
+      <img className='card-img-top' id="pinImg" src={imageUrl} alt="pin cover photo"></img>
+      <div className='card-body'>
+      <h5 tag="h5" className="mt-2">{title}</h5>
+      <div className='btn-group-md justify-content-between mb-2'>
+      <p className='card-text'>{favorite ? '❤️' : ''}</p>
+      <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt"></i></Button>
+      <Button className='btn-md p-2 ml-1' color="danger" onClick={() => handleClick('update')}>
         {updating ? 'Close Form' : 'Edit Pin'}
       </Button>
+      </div>
       {
         updating && <PinForm
         formTitle='Update Pin'
@@ -55,7 +52,8 @@ const PinCard = ({
         title={title}
         />
       }
-    </Card>
+    </div>
+  </div>
   );
 };
 
