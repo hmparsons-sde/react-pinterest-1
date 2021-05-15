@@ -16,7 +16,9 @@ function BoardsView({ user, boards, setBoards }) {
        { !showButton
          ? <Button className="m-3" color='danger' onClick={handleClick}>Add Board</Button>
          : <div>
-            <Button className="m-3" color='secondary' onClick={handleClick}>Close</Button>
+              <div className="close-btn">
+                <Button className="m-3" color='secondary' onClick={handleClick}>Close</Button>
+              </div>
             <BoardForm className="justify-content-center mt-3" setBoards={setBoards} user={user}/>
           </div>
        }

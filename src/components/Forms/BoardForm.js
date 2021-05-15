@@ -38,7 +38,7 @@ export default function BoardForm({ user, formTitle, setBoards }) {
           onChange={handleInputChange}
         >
         </input>
-        <label>Image URL</label>
+        <label>Image URL:</label>
         <input
           name='imageUrl'
           type='url'

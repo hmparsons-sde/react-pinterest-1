@@ -5,3 +5,35 @@
   width: 20em;
   padding: .5em;
 }
+
+.close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#board-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 5%;
+
+    .card {
+      width: 375px;
+      height: auto;
+      margin: 15px;
+      box-shadow: 50px;
+    }
+
+    .card-body {
+      flex: none;
+      text-align: center;
+      padding: 0;
+    }
+
+    #boardImg {
+      width: 100%;
+      object-fit: fill;
+      max-height: 275px;
+    }
+}

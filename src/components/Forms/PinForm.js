@@ -10,8 +10,7 @@ export default function PinForm({
     title: '',
     imageUrl: '',
     favorite: false,
-    uid: user.uid,
-    boardId: ''
+    uid: user.uid
   });
 
   const handleInputChange = (e) => {

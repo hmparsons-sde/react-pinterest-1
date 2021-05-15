@@ -25,10 +25,12 @@ function BoardCard({
   };
   return (
     <Card body>
-      <CardImg id="pinImg" src={imageUrl}></CardImg>
-      <CardSubtitle tag="h5">{title}</CardSubtitle>
-      <Button color="info" onClick={() => handleClick('view')}>View Pins</Button>
-      <Button color="danger" onClick={() => handleClick('delete')}>Delete Board</Button>
+      <CardImg id="boardImg" src={imageUrl}></CardImg>
+      <div className="btn-group-md justify-content-around mb-4 mt-auto">
+        <CardSubtitle tag="h5" className="my-3">{title}</CardSubtitle>
+        <Button color="danger" onClick={() => handleClick('delete')} className="btn-md mx-4"><i className="far fa-trash-alt"></i></Button>
+        <Button color="danger" onClick={() => handleClick('view')} className="mx-4">View Pins</Button>
+      </div>
     </Card>
   );
 }
