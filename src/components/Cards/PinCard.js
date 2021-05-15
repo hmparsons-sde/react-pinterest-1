@@ -30,7 +30,7 @@ const PinCard = ({
   };
 
   return (
-    <div className='card m-2'>
+    <div className='card m-2 outline-dark'>
       <img className='card-img-top' id="pinImg" src={imageUrl} alt="pin cover photo"></img>
       <div className='card-body'>
       <h5 tag="h5" className="mt-2">{title}</h5>
