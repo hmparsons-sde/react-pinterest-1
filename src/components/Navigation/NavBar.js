@@ -40,7 +40,7 @@ const NavBar = ({ user }) => {
   return (
     <div>
       <Navbar color="light" light expand="md" className='justify-content-between'>
-        <NavbarBrand href="/home">
+        <NavbarBrand href="/">
           <img src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png" alt="Pinterest Logo" width="30" height="30" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
