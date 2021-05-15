@@ -4,7 +4,7 @@
 @import 'boards';
 
 body {
-  background-color: $favColor;
+  background-color: white;
 }
 
 h1 {
@@ -16,3 +16,9 @@ h1 {
   justify-content: center;
   align-items: center;
 }
+
+// .add-board-form {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }

@@ -39,23 +39,23 @@ const NavBar = ({ user }) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar color="light" light expand="md" className='justify-content-between'>
         <NavbarBrand href="/home">
-          <img src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png" alt="Pinterest Logo" width="30" height="24" />
+          <img src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png" alt="Pinterest Logo" width="30" height="30" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             {user && authenticated()}
             {user !== null && (
-              <NavItem>
+              <NavItem className='align-self-center ml-1'>
                 {user ? (
-                  <Button color="danger" onClick={signOutUser}>
-                    Sign Out
+                  <Button size='sm' color="danger" onClick={signOutUser}>
+                    <i className="fas fa-sign-out-alt"></i>
                   </Button>
                 ) : (
-                  <Button color="info" onClick={signInUser}>
-                    Sign In
+                  <Button size='sm' color="info" onClick={signInUser}>
+                    <i className="fas fa-sign-in-alt"></i>
                   </Button>
                 )}
               </NavItem>
