@@ -6,14 +6,15 @@ import {
 import { createPin, updatePin } from '../../helpers/data/PinsData';
 
 export default function PinForm({
-  user, formTitle, setPins, title, imageUrl, firebaseKey
+  user, formTitle, setPins, title, imageUrl, firebaseKey, boards, boardId
 }) {
   const [pin, setPin] = useState({
     title: title || '',
     imageUrl: imageUrl || '',
     firebaseKey: firebaseKey || null,
     favorite: false,
-    uid: user.uid
+    uid: user.uid,
+    boardId: boardId || ''
   });
 
   const handleInputChange = (e) => {
@@ -31,7 +32,7 @@ export default function PinForm({
       createPin(pin, user.uid).then((pinsArray) => setPins(pinsArray));
     }
   };
-
+  console.warn(boards);
   return (
     <div className="pin-form-container">
       <Form className="add-pin-form" autoComplete="off">
@@ -53,6 +54,21 @@ export default function PinForm({
           className="mt-2"
         ></Input>
         <br></br>
+        <Label for="exampleSelect">Select Board</Label>
+        <Input
+          type="select"
+          name="boardId"
+          placeholder="Board Name"
+          id="exampleSelect"
+          onChange={handleInputChange}
+        >
+          {boards?.map((board) => (
+            <option key={board.firebaseKey} value={board.firebaseKey}>
+              {board.title}
+            </option>
+          ))}
+        </Input>
+        <br></br>
         <Input
           name="favorite"
           type="checkbox"
@@ -62,16 +78,6 @@ export default function PinForm({
         ></Input>
         <Label> Favorite </Label>
         <br></br>
-        <Form.Group controlId="exampleForm.SelectCustom">
-          <Form.Label>Select Board</Form.Label>
-          <Form.Control as="select" custom>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Form.Control>
-        </Form.Group>
         <Button
           color="danger"
           type="submit"
@@ -92,5 +98,7 @@ PinForm.propTypes = {
   setPins: PropTypes.func,
   title: PropTypes.string,
   imageUrl: PropTypes.string,
-  firebaseKey: PropTypes.string
+  firebaseKey: PropTypes.string,
+  boards: PropTypes.array,
+  boardId: PropTypes.string,
 };
