@@ -11,7 +11,9 @@ const PinCard = ({
   firebaseKey,
   user,
   setPins,
-  boardId
+  boardId,
+  boards,
+  setBoards
 }) => {
   const [updating, setUpdating] = useState(false);
 
@@ -50,6 +52,8 @@ const PinCard = ({
         user={user}
         imageUrl={imageUrl}
         title={title}
+        boards={boards}
+        setBoards={setBoards}
         />
       }
     </div>
@@ -66,6 +70,8 @@ PinCard.propTypes = {
   user: PropTypes.any,
   setPins: PropTypes.func,
   boardId: PropTypes.string,
+  boards: PropTypes.array,
+  setBoards: PropTypes.func,
 };
 
 export default PinCard;

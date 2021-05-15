@@ -33,7 +33,7 @@ export default function Routes({
         <PrivateRoute
           exact path='/pins'
           user={user}
-          component={() => <Pins pins={pins} setPins={setPins} user={user}/>}
+          component={() => <Pins pins={pins} setPins={setPins} user={user} boards={boards} setBoards={setBoards}/>}
         />
         <PrivateRoute
           exact path='/favorites'
