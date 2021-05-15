@@ -16,7 +16,7 @@ const BoardCard = ({
   // setBoards,
   imageUrl,
   title,
-  // setBoards,
+  handleClick
   // }) => {
   //   const [editing, setEditing] = useState(false);
   //   const history = useHistory();
@@ -59,12 +59,11 @@ const BoardCard = ({
   //     </Card>
   //   );
   // };
-  handleClick
 }) => (
-<Card body>
-      <CardImg id="pinImg" src={imageUrl}></CardImg>
+  <Card body id="boardCard">
+      <CardImg id="cardImg" src={imageUrl}></CardImg>
       <CardSubtitle tag="h5">{title}</CardSubtitle>
-      <Button color="info" onClick={() => handleClick('view')}>View Board</Button>
+      <Button color="dark" onClick={() => handleClick('view')}>View Pins</Button>
       <Button color="danger" onClick={() => handleClick('delete')}>Delete Board</Button>
   </Card>
 );
