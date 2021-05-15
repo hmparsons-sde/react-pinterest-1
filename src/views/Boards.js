@@ -19,7 +19,7 @@ function BoardsView({ user, boards, setBoards }) {
             <Button className="m-3" color='secondary' onClick={handleClick}>Close</Button>
             <BoardForm className="justify-content-center mt-3" setBoards={setBoards} user={user}/>
           </div>
-        }
+       }
       </section>
 
       <div className="card-container" id="board-cards">
@@ -34,9 +34,6 @@ function BoardsView({ user, boards, setBoards }) {
           />
         ))}
       </div>
-      <div>
-      <h1>Boards</h1>
-    </div>
     </>
   );
 }
