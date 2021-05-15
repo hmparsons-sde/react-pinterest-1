@@ -3,11 +3,17 @@
 @import 'pins';
 
 body {
-  background-color: $favColor;
+  background-color: white;
 }
 
 h1 {
   text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-board-form {
