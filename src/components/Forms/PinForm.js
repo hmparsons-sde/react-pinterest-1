@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import {
+  Button, Form, Input, Label
+} from 'reactstrap';
 import { createPin, updatePin } from '../../helpers/data/PinsData';
 
 export default function PinForm({
@@ -31,39 +33,54 @@ export default function PinForm({
   };
 
   return (
-    <div className='pin-form-container'>
-      <form
-        className='add-pin-form'
-        autoComplete='off'
-      >
+    <div className="pin-form-container">
+      <Form className="add-pin-form" autoComplete="off">
         <h1>{formTitle}</h1>
-        <input
-          name='title'
-          type='text'
-          placeholder='Title'
+        <Input
+          name="title"
+          type="text"
+          placeholder="Title"
           value={pin.title}
           onChange={handleInputChange}
-        >
-        </input><br></br>
-        <input
-          name='imageUrl'
-          type='url'
-          placeholder='Image URL'
+        ></Input>
+        <br></br>
+        <Input
+          name="imageUrl"
+          type="url"
+          placeholder="Image URL"
           value={pin.imageUrl}
           onChange={handleInputChange}
           className="mt-2"
+        ></Input>
+        <br></br>
+        <Input
+          name="favorite"
+          type="checkbox"
+          checked={pin.favorite}
+          onChange={handleInputChange}
+          className="mt-2"
+        ></Input>
+        <Label> Favorite </Label>
+        <br></br>
+        <Form.Group controlId="exampleForm.SelectCustom">
+          <Form.Label>Select Board</Form.Label>
+          <Form.Control as="select" custom>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </Form.Control>
+        </Form.Group>
+        <Button
+          color="danger"
+          type="submit"
+          onClick={handleSubmit}
+          className="mt-4"
         >
-        </input><br></br>
-        <input
-            name="favorite"
-            type="checkbox"
-            checked={pin.favorite}
-            onChange={handleInputChange}
-            className="mt-2"
-          ></input><label> Favorite </label>
-          <br></br>
-        <Button color="danger" type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
-      </form>
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 }
