@@ -18,9 +18,6 @@ export default function PinView({
   const handleClick = () => {
     setShowButton((prevState) => !prevState);
   };
-  if (pins.length === 0) {
-    return <h3>Nothing here! Create a new pin!</h3>;
-  }
   return (
     <>
       <section className="header mt-2">
@@ -32,6 +29,11 @@ export default function PinView({
           </div>
           }
         </section>;
+        {pins.length === 0
+        && <h3 className="text-center mt-2">
+            Nothing here! Create something!
+          </h3>
+        }
         <PinContainer className="card-container align-content-center" id="pin-cards">
         {pins.map((pin) => (
           <PinCard
