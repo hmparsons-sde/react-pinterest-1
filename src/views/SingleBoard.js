@@ -6,26 +6,30 @@ import PinCard from '../components/Cards/PinCard';
 
 export default function SingleBoard() {
   const [board, setBoard] = useState({});
-  const [boardPin, setBoardPin] = useState([]);
+  const [boardPins, setBoardPins] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    getSingleBoard(id).then(setBoard);
-    boardsAndPins(id).then((data) => setBoardPin(data));
-  }, []);
-
-  return (
+    const getSingleBoardInfo = getSingleBoard(id);
+    const getPins = boardsAndPins(id);
+    Promise.all([getSingleBoardInfo, getPins]).then((response) => {
+      const [boardObject, pins] = response;
+      setBoard(boardObject);
+      setBoardPins(pins);
+    }, []);
+    return (
     <div className="boardPinContainer">
       <h2>{board.title}</h2>
       <div className="pins-board">
-        {boardPin.map((boardPinArray) => (
+        {boardPins.map((boardPinArray) => (
           <PinCard
             key={boardPinArray.firebaseKey}
             user={boardPinArray.user}
-            setPins={boardPinArray.setPins}
+            setBoardPins={setBoardPins}
           />
         ))};
       </div>
     </div>
-  );
+    );
+  });
 }

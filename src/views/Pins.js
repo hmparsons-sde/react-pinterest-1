@@ -18,18 +18,21 @@ export default function PinView({
   const handleClick = () => {
     setShowButton((prevState) => !prevState);
   };
+  if (pins.length === 0) {
+    return <h3>Nothing here! Create a new pin!</h3>;
+  }
   return (
     <>
-    <section className="header mt-2">
-      { !showButton
-        ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add Pin</Button>
-        : <div>
-        <Button className="m-2 btn-lg" color='secondary' onClick={handleClick}>Close</Button>
-          <PinForm className="justify-content-center mt-3" setPins={setPins} user={user} boards={boards}/>
-        </div>
-        }
-      </section>
-      <PinContainer className="card-container align-content-center" id="pin-cards">
+      <section className="header mt-2">
+        { !showButton
+          ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add Pin</Button>
+          : <div>
+          <Button className="m-2 btn-lg" color='secondary' onClick={handleClick}>Close</Button>
+            <PinForm className="justify-content-center mt-3" setPins={setPins} user={user} boards={boards}/>
+          </div>
+          }
+        </section>;
+        <PinContainer className="card-container align-content-center" id="pin-cards">
         {pins.map((pin) => (
           <PinCard
             key={pin.firebaseKey}
