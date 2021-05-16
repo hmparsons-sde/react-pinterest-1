@@ -22,9 +22,9 @@ export default function PinView({
     <>
     <section className="header mt-2">
       { !showButton
-        ? <Button className="m-2" color='danger' onClick={handleClick}>Add Pin</Button>
+        ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add Pin</Button>
         : <div>
-        <Button className="m-2" color='secondary' onClick={handleClick}>Close</Button>
+        <Button className="m-2 btn-lg" color='secondary' onClick={handleClick}>Close</Button>
           <PinForm className="justify-content-center mt-3" setPins={setPins} user={user} boards={boards}/>
         </div>
         }

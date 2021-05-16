@@ -1,21 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-export default function Home({ user }) {
+const LandingPage = styled.div`
+  text-align: center;
+`;
+
+export default function Home() {
   return (
-    <div>
-    { user
-      ? <section className='header'>
-        <img className='profileImage' src={user.profileImage} />
-        </section>
-      : <section className='header'>
-          <header className='h1'>Please Login to Continue</header>
-        </section>
-      }
-   </div>
+    <LandingPage>
+      <img className="align-content-center text-center" src="https://logos-world.net/wp-content/uploads/2020/09/Pinterest-Logo-2011-2016.png" height="500px" width="1000px"></img>
+    </LandingPage>
   );
 }
-
-Home.propTypes = {
-  user: PropTypes.any
-};

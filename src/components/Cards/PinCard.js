@@ -12,6 +12,11 @@ const PinnedItem = styled.div`
   box-shadow: 50px;
 `;
 
+const PinLink = styled.div`
+  text-decoration: none;
+  color: black;
+`;
+
 const PinCard = ({
   imageUrl,
   title,
@@ -20,7 +25,8 @@ const PinCard = ({
   user,
   setPins,
   boardId,
-  boards
+  boards,
+  url
 }) => {
   const [updating, setUpdating] = useState(false);
 
@@ -42,7 +48,9 @@ const PinCard = ({
     <PinnedItem className='card'>
       <img id="pinImg" src={imageUrl} alt="pin cover photo"></img>
       <div className='card-body'>
-      <h5 tag="h5" className="mt-2">{title}</h5>
+      <PinLink>
+        <h5 tag="h5" className="mt-1"><a href={url} className="card-link mt-2">{title}</a></h5>
+      </PinLink>
       <div className='btn-group-md justify-content-between'>
       <p className='card-text'>{favorite ? '❤️' : ''}</p>
       <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt"></i></Button>
@@ -77,6 +85,7 @@ PinCard.propTypes = {
   setPins: PropTypes.func,
   boardId: PropTypes.string,
   boards: PropTypes.array,
+  url: PropTypes.string.isRequired
 };
 
 export default PinCard;

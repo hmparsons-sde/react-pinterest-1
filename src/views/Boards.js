@@ -20,9 +20,9 @@ function BoardsView({ user, boards, setBoards }) {
     <>
       <section className="header mt-2">
       { !showButton
-        ? <Button className="m-2" color='danger' onClick={handleClick}>Add Board</Button>
+        ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add Board</Button>
         : <div>
-        <Button className="m-2" color='secondary' onClick={handleClick}>Close</Button>
+        <Button className="m-2 btn-lg" color='secondary' onClick={handleClick}>Close</Button>
           <BoardForm className="justify-content-center mt-3" setBoards={setBoards} user={user} boards={boards}/>
         </div>
         }

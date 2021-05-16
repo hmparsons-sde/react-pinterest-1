@@ -40,13 +40,14 @@ export default function PinForm({
   return (
     <div className="pin-form-container">
       <Form className="add-pin-form" autoComplete="off">
-        <h3>{formTitle}</h3>
+        <h4 className="mt-4 text-center mb-2">{formTitle}</h4>
         <Input
           name="title"
           type="text"
           placeholder="Title"
           value={pin.title}
           onChange={handleInputChange}
+          className="mt-2"
         ></Input>
         <br></br>
         <Input
@@ -55,10 +56,9 @@ export default function PinForm({
           placeholder="Image URL"
           value={pin.imageUrl}
           onChange={handleInputChange}
-          className="mt-2"
+          className="mt-1"
         ></Input>
         <br></br>
-        <Label for="exampleSelect">Select Board</Label>
         <Input
           type="select"
           name="boardId"
@@ -78,15 +78,15 @@ export default function PinForm({
           type="checkbox"
           checked={pin.favorite}
           onChange={handleInputChange}
-          className="mt-2"
+          className="ml-2 align-self-center text-center"
         ></Input>
-        <Label> Favorite </Label>
+        <Label className="ml-4 text-center"> Favorite </Label>
         <br></br>
         <Button
           color="danger"
           type="submit"
           onClick={handleSubmit}
-          className="mt-4"
+          className="mt-2 ml-1"
         >
           Submit
         </Button>

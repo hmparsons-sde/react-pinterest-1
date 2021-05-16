@@ -2,7 +2,7 @@
 // import { useHistory } from 'react-router-dom';
 import React from 'react';
 import {
-  Button, CardLink,
+  Button
 } from 'reactstrap';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -67,7 +67,7 @@ const BoardCard = ({
         <h5 tag="h5" className="text-center mt-1 mb-3">{title}</h5>
       <div className='btn-group-md justify-content-between'>
         <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt"></i></Button>
-        <CardLink href='#' color="info" onClick={() => handleClick('view')}>View Pins</CardLink>
+        <Button className='btn-md' href='#' color="danger" onClick={() => handleClick('view')}>View Pins</Button>
       </div>
     </div>
   </BoardItem>
