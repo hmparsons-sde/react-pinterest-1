@@ -45,7 +45,7 @@ const PinCard = ({
   };
 
   return (
-    <PinnedItem className='card'>
+    <PinnedItem className='card' key={firebaseKey}>
       <img id="pinImg" src={imageUrl} alt="pin cover photo"></img>
       <div className='card-body'>
       <PinLink>
@@ -76,8 +76,8 @@ const PinCard = ({
 };
 
 PinCard.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
+  title: PropTypes.string,
   favorite: PropTypes.bool,
   handleClick: PropTypes.func,
   firebaseKey: PropTypes.string,
@@ -85,7 +85,7 @@ PinCard.propTypes = {
   setPins: PropTypes.func,
   boardId: PropTypes.string,
   boards: PropTypes.array,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string
 };
 
 export default PinCard;
