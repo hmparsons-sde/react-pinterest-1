@@ -1,11 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Home() {
+export default function Home({ user }) {
   return (
-    <div id="logo">
-      <h1>Home</h1>
-    </div>
+    <div>
+    { user
+      ? <section className='header'>
+        <img className='profileImage' src={user.profileImage} />
+        </section>
+      : <section className='header'>
+          <header className='h1'>Please Login to Continue</header>
+        </section>
+      }
+   </div>
   );
 }
 
-export default Home;
+Home.propTypes = {
+  user: PropTypes.any
+};

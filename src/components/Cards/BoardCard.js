@@ -2,41 +2,42 @@
 // import { useHistory } from 'react-router-dom';
 import React from 'react';
 import {
-  Button,
-  Card,
-  CardSubtitle,
-  CardImg
+  Button, CardLink,
 } from 'reactstrap';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
+import { deleteBoard } from '../../helpers/data/BoardsData';
 // import { deleteStudent } from '../helpers/data/StudentData';
 // import BoardForm from './BoardForm';
+const BoardItem = styled.div`
+  width: 300px;
+  height: auto;
+  margin: 15px;
+  box-shadow: 50px;
+`;
 
 const BoardCard = ({
-  // firebaseKey,
-  // setBoards,
+  firebaseKey,
+  setBoards,
   imageUrl,
   title,
-  // setBoards,
-  // }) => {
-  //   const [editing, setEditing] = useState(false);
-  //   const history = useHistory();
+}) => {
+  const history = useHistory();
 
-  //   const handleClick = (type) => {
-  //     switch (type) {
-  //       case 'delete':
-  //         deleteBoard(firebaseKey)
-  //           .then(setBoards);
-  //         break;
-  //       case 'edit':
-  //         setEditing((prevState) => !prevState);
-  //         break;
-  //       case 'view':
-  //         history.push(`/boards/${firebaseKey}`);
-  //         break;
-  //       default:
-  //         console.warn('nothing selected');
-  //     }
-  //   };
+  const handleClick = (type) => {
+    switch (type) {
+      case 'delete':
+        deleteBoard(firebaseKey)
+          .then(setBoards);
+        break;
+      case 'view':
+        history.push(`/boards/${firebaseKey}`);
+        break;
+      default:
+        console.warn('nothing selected');
+    }
+  };
 
   //   return (
   //     <Card body>
@@ -59,15 +60,19 @@ const BoardCard = ({
   //     </Card>
   //   );
   // };
-  handleClick
-}) => (
-<Card body>
-      <CardImg id="pinImg" src={imageUrl}></CardImg>
-      <CardSubtitle tag="h5">{title}</CardSubtitle>
-      <Button color="info" onClick={() => handleClick('view')}>View Pins</Button>
-      <Button color="danger" onClick={() => handleClick('delete')}>Delete Board</Button>
-  </Card>
-);
+  return (
+  <BoardItem className='card' key={firebaseKey}>
+    <img id="pinImg" src={imageUrl} alt="pin cover photo"></img>
+      <div className='card-body'>
+        <h5 tag="h5" className="text-center mt-1 mb-3">{title}</h5>
+      <div className='btn-group-md justify-content-between'>
+        <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt"></i></Button>
+        <CardLink href='#' color="info" onClick={() => handleClick('view')}>View Pins</CardLink>
+      </div>
+    </div>
+  </BoardItem>
+  );
+};
 BoardCard.propTypes = {
   firebaseKey: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,

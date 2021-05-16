@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Button, Form, Input, Label
 } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 import { createPin, updatePin } from '../../helpers/data/PinsData';
 
 export default function PinForm({
@@ -24,19 +25,22 @@ export default function PinForm({
     }));
   };
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (pin.firebaseKey) {
-      updatePin(pin).then((pinsArray) => setPin(pinsArray));
+      updatePin(pin, user).then(setPins);
     } else {
-      createPin(pin).then((pinsArray) => setPins(pinsArray));
+      createPin(pin, user).then(setPins);
+      history.push('pins');
     }
   };
   console.warn(boards);
   return (
     <div className="pin-form-container">
       <Form className="add-pin-form" autoComplete="off">
-        <h1>{formTitle}</h1>
+        <h3>{formTitle}</h3>
         <Input
           name="title"
           type="text"

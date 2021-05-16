@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import { deletePin } from '../../helpers/data/PinsData';
 import PinForm from '../Forms/PinForm';
+
+const PinnedItem = styled.div`
+  width: 300px;
+  height: auto;
+  margin: 15px;
+  box-shadow: 50px;
+`;
 
 const PinCard = ({
   imageUrl,
@@ -31,11 +39,11 @@ const PinCard = ({
   };
 
   return (
-    <div className='card m-2 outline-dark'>
-      <img className='card-img-top' id="pinImg" src={imageUrl} alt="pin cover photo"></img>
+    <PinnedItem className='card'>
+      <img id="pinImg" src={imageUrl} alt="pin cover photo"></img>
       <div className='card-body'>
       <h5 tag="h5" className="mt-2">{title}</h5>
-      <div className='btn-group-md justify-content-between mb-2'>
+      <div className='btn-group-md justify-content-between'>
       <p className='card-text'>{favorite ? '❤️' : ''}</p>
       <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt"></i></Button>
       <Button className='btn-md p-2 ml-1' color="danger" onClick={() => handleClick('update')}>
@@ -55,7 +63,7 @@ const PinCard = ({
         />
       }
     </div>
-  </div>
+  </PinnedItem>
   );
 };
 

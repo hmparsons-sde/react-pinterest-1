@@ -23,3 +23,15 @@ h1 {
   width: 20em;
   padding: .5em;
 }
+
+#board-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+#boardImg {
+  width: 100%;
+  object-fit: fill;
+}

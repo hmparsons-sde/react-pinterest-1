@@ -1,22 +1,6 @@
-#pin-cards {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin-top: 5%;
-
-  .card {
-    width: 300px;
-    height: auto;
-    margin: 15px;
-    box-shadow: 50px;
-  }
-
-  .card-body {
-    flex: none;
-  }
-}
-
-#pinImg {
-  width: 100%;
-  object-fit: fill;
-}
+// #pin-cards {
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: center;
+//   margin-top: 5%;
+// }

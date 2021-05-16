@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import PinCard from '../components/Cards/PinCard';
 import PinForm from '../components/Forms/PinForm';
 
+const PinContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 5%;
+`;
 export default function PinView({
   user, pins, setPins, boards
 }) {
@@ -22,7 +29,7 @@ export default function PinView({
         </div>
         }
       </section>
-      <div className="card-container align-content-center" id="pin-cards">
+      <PinContainer className="card-container align-content-center" id="pin-cards">
         {pins.map((pin) => (
           <PinCard
             key={pin.firebaseKey}
@@ -32,7 +39,7 @@ export default function PinView({
             {...pin}
           />
         ))}
-      </div>
+      </PinContainer>
      </>
   );
 }
