@@ -27,6 +27,11 @@ function BoardsView({ user, boards, setBoards }) {
         </div>
         }
       </section>
+      {boards.length === 0
+        && <h3 className="text-center mt-2">
+            Nothing here! Create something!
+          </h3>
+      }
       <BoardContainer className="card-container" id="board-cards">
         {boards.map((boardInfo) => (
           <BoardCard
