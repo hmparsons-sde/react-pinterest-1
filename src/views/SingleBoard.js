@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { getSingleBoard } from '../helpers/data/BoardsData';
 // import { boardsAndPins } from '../helpers/data/BoardPinsData';
 import PinCard from '../components/Cards/PinCard';
+import { getBoardPins } from '../helpers/data/PinsData';
 
 const BoardPinContainer = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const BoardPinContainer = styled.div`
   justify-content: center;
   margin-top: 5%;
 `;
-export default function SingleBoard({ firebaseKey }) {
+export default function SingleBoard({ firebaseKey, user }) {
   const [board, setBoard] = useState({});
   const [boardPins, setBoardPins] = useState([]);
 
@@ -19,16 +20,22 @@ export default function SingleBoard({ firebaseKey }) {
     getSingleBoard(firebaseKey).then(setBoard);
   }, []);
 
+  useEffect(() => {
+    getBoardPins(firebaseKey).then(setBoardPins);
+  }, []);
+
   return (
     <BoardPinContainer>
       <h2>{board.title}</h2>
       <div className="pins-board">
-        {boardPins.map((boardPinArray) => (
+        {boardPins.map((pin) => (
           <PinCard
-            key={boardPinArray.firebaseKey}
-            user={boardPinArray.user}
-            setBoardPins={setBoardPins}
-          />
+          key={pin.firebaseKey}
+          user={user}
+          setBoardPins={setBoardPins}
+          board={board}
+          {...pin}
+        />
         ))};
       </div>
     </BoardPinContainer>
@@ -38,4 +45,5 @@ export default function SingleBoard({ firebaseKey }) {
 SingleBoard.propTypes = {
   firebaseKey: PropTypes.string,
   boardId: PropTypes.string,
+  user: PropTypes.any
 };

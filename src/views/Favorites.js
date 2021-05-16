@@ -12,7 +12,7 @@ const FavoritesContainer = styled.div`
 `;
 
 export default function Favorites({
-  user, setPins, firebaseKey
+  user, pins, setPins, firebaseKey
 }) {
   const [favorites, setFavorites] = useState([]);
 
@@ -33,6 +33,7 @@ export default function Favorites({
         key={firebaseKey}
         user={user}
         setPins={setPins}
+        pins={pins}
       />
     ))};
     </FavoritesContainer>
@@ -43,5 +44,6 @@ export default function Favorites({
 Favorites.propTypes = {
   setPins: PropTypes.func,
   user: PropTypes.any,
-  firebaseKey: PropTypes.string
+  firebaseKey: PropTypes.string,
+  pins: PropTypes.array
 };
