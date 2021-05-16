@@ -18,7 +18,7 @@ export default function Favorites({
 
   useEffect(() => {
     getFavoritePins().then(setFavorites);
-  }, []);// if (pin.favorite === false || pin.favorite === 'false')
+  }, []);
   return (
     <>
     <FavoritesContainer>

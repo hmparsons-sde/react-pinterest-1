@@ -1,5 +1,3 @@
-// import React, { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
 import React from 'react';
 import {
   Button
@@ -8,8 +6,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import { deleteBoard } from '../../helpers/data/BoardsData';
-// import { deleteStudent } from '../helpers/data/StudentData';
-// import BoardForm from './BoardForm';
+
 const BoardItem = styled.div`
   width: 300px;
   height: auto;
@@ -39,27 +36,6 @@ const BoardCard = ({
     }
   };
 
-  //   return (
-  //     <Card body>
-  //       <CardTitle tag="h5">{title}</CardTitle>
-  //       <CardImg src={imageUrl}></CardImg>
-  //       <Button color="dark" onClick={() => handleClick('view')}>View Board</Button>
-  //       <Button color="danger" onClick={() => handleClick('delete')}>Delete Board</Button>
-  //       <Button color="info" onClick={() => handleClick('edit')}>
-  //         {editing ? 'Close Form' : 'Edit Board'}
-  //       </Button>
-  //       {
-  //         editing && <BoardForm
-  //           formTitle='Edit Board'
-  //           setBoards={setBoards}
-  //           firebaseKey={firebaseKey}
-  //           title={title}
-  //           pins={pins}
-  //         />
-  //       }
-  //     </Card>
-  //   );
-  // };
   return (
   <BoardItem className='card' key={firebaseKey}>
     <img id="pinImg" src={imageUrl} alt="pin cover photo"></img>

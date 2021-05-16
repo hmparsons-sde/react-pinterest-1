@@ -1,6 +1,5 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
-@import 'pins';
 
 body {
   background-color: white;
@@ -22,16 +21,4 @@ h1 {
   margin: 0 auto;
   width: 20em;
   padding: .5em;
-}
-
-#board-cards {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin-top: 5%;
-}
-
-#boardImg {
-  width: 100%;
-  object-fit: fill;
 }

@@ -68,18 +68,6 @@ const searchPins = (uid, searchValue) => new Promise((resolve, reject) => {
   })
     .catch((error) => reject(error));
 });
-// PUBLIC PINS
-const getPublicPins = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/pins.json?orderBy="public"&equalTo=true`)
-    .then((response) => resolve(Object.values(response.data)))
-    .catch((error) => reject(error));
-});
-// ADD PUBLIC PINS
-const addPublicPin = (firebaseKey, pinObject) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/pins/${firebaseKey}.json`, pinObject)
-    .then(() => getPublicPins().then((pinsArray) => resolve(pinsArray)))
-    .catch((error) => reject(error));
-});
 
 export {
   getPins,
@@ -89,7 +77,5 @@ export {
   updatePin,
   getBoardPins,
   getFavoritePins,
-  searchPins,
-  addPublicPin,
-  getPublicPins
+  searchPins
 };

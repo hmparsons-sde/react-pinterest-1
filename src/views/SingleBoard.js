@@ -18,12 +18,7 @@ export default function SingleBoard({ firebaseKey }) {
   useEffect(() => {
     getSingleBoard(firebaseKey).then(setBoard);
   }, []);
-  // const getPins = boardsAndPins(boardId);
-  // Promise.all([getSingleBoardInfo, getPins]).then((response) => {
-  //   const [boardObject, pins] = response;
-  //   setBoard(boardObject);
-  //   setBoardPins(pins);
-  // }, []);
+
   return (
     <BoardPinContainer>
       <h2>{board.title}</h2>
