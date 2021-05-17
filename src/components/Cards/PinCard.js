@@ -12,8 +12,7 @@ const PinCard = ({
   user,
   setPins,
   boardId,
-  boards,
-  setBoards
+  boards
 }) => {
   const [updating, setUpdating] = useState(false);
 
@@ -53,7 +52,6 @@ const PinCard = ({
         imageUrl={imageUrl}
         title={title}
         boards={boards}
-        setBoards={setBoards}
         />
       }
     </div>
@@ -71,7 +69,6 @@ PinCard.propTypes = {
   setPins: PropTypes.func,
   boardId: PropTypes.string,
   boards: PropTypes.array,
-  setBoards: PropTypes.func,
 };
 
 export default PinCard;

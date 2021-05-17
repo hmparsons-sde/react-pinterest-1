@@ -6,19 +6,24 @@ import {
   CardImg
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { deleteBoard } from '../../helpers/data/BoardsData';
+import { deleteBoardsPins } from '../../helpers/data/BoardPinsData';
+import { getPins } from '../../helpers/data/PinsData';
 
 function BoardCard({
   imageUrl,
   title,
   firebaseKey,
   user,
-  setBoards
+  setBoards,
+  setPins
 }) {
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteBoard(firebaseKey, user.uid).then((boardArray) => setBoards(boardArray));
+        deleteBoardsPins(firebaseKey, user.uid)
+          .then(setBoards)
+          .then(() => getPins(user.uid))
+          .then(setPins);
         break;
       default: console.warn('nothing selected');
     }
@@ -41,7 +46,8 @@ BoardCard.propTypes = {
   title: PropTypes.string.isRequired,
   setBoards: PropTypes.func,
   handleClick: PropTypes.func,
-  user: PropTypes.any
+  user: PropTypes.any,
+  setPins: PropTypes.func
 };
 
 export default BoardCard;

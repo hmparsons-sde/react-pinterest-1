@@ -4,7 +4,12 @@ import { Button } from 'reactstrap';
 import BoardCard from '../components/Cards/BoardCard';
 import BoardForm from '../components/Forms/BoardForm';
 
-function BoardsView({ user, boards, setBoards }) {
+function BoardsView({
+  user,
+  boards,
+  setBoards,
+  setPins
+}) {
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
     setShowButton((prevState) => !prevState);
@@ -33,6 +38,7 @@ function BoardsView({ user, boards, setBoards }) {
             title={boardInfo.title}
             user={user}
             setBoards={setBoards}
+            setPins={setPins}
           />
         ))}
       </div>
@@ -43,7 +49,8 @@ function BoardsView({ user, boards, setBoards }) {
 BoardsView.propTypes = {
   boards: PropTypes.array.isRequired,
   setBoards: PropTypes.func.isRequired,
-  user: PropTypes.any
+  user: PropTypes.any,
+  setPins: PropTypes.func
 };
 
 export default BoardsView;
