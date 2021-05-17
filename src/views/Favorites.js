@@ -11,9 +11,20 @@ const FavoritesContainer = styled.div`
   margin-top: 5%;
 `;
 
-export default function Favorites({
-  user, pins, setPins, firebaseKey
-}) {
+// So here's my thinking, not necessarily knowing everything happening in the PinCard component. Essentially, you're passing in your pin object and then destructuring out a bunch of things from that to create your card. So you will only need to pass it that destructured pin object utilizing the spread operator. That make any sense?
+// Go check out your router component so you can see exactly what props you're passiing into your Favorites component
+// favorites, set favorites, user
+// But favorites and setFavorites only exist in the scope of this component, right? So you don't need to pass those in as props at all
+// And you don't even need to set pins either. The only thing I think you actually need to pass this component is your user
+// Make sure to change it in your routes too.
+// ok I did that. does this look vbetter?
+// Yeah, lot cleaner. I think the part that caused confusion is the passing around of props.
+// ok tell me when to try it! I LOVE YOUUU
+// I love you tooo! Try it now and see if any errors or weird shit comes up
+// we are working on single board with Aja now, but could you check out the edit form in PinCard?
+// OMG IT WORKS
+// 
+export default function Favorites(user) {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
@@ -28,14 +39,11 @@ export default function Favorites({
         </h3>
       }
 
-    {favorites.filter((pin) => pin.favorite === true).map(() => (
-      <PinCard
-        key={firebaseKey}
-        user={user}
-        setPins={setPins}
-        pins={pins}
-      />
-    ))};
+      {favorites.map((favoritePin) => <PinCard
+          {...favoritePin}
+          key={favoritePin.firebaseKey}
+          user={user}
+        />)}
     </FavoritesContainer>
     </>
   );

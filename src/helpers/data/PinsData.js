@@ -55,6 +55,7 @@ const getBoardPins = (boardId) => new Promise((resolve, reject) => {
 });
 // GET PINS WITH FAVORITE BOOLEAN EQUAL TO TRUE
 const getFavoritePins = () => new Promise((resolve, reject) => {
+  // Are you getting the correct data back from this call? -- YES
   axios.get(`${dbUrl}/pins.json?orderBy="favorite"&equalTo=true`)
     .then((response) => {
       const favoritePinsArray = Object.values(response.data);
