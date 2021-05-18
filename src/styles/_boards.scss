@@ -1,10 +1,22 @@
+.add-board-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 20em;
+  padding: .5em;
+}
+
+.close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #board-cards {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   margin-top: 5%;
-  // width: 300px;
-  // margin: 5px;
 
   .card {
     width: 300px;

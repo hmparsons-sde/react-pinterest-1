@@ -49,7 +49,7 @@ export default function Routes({
         <PrivateRoute
           path='/boards/:id'
           user={user}
-          component={() => <SingleBoard user={user}/>}
+          component={() => <SingleBoardView user={user}/>}
         />
       </Switch>
     </div>

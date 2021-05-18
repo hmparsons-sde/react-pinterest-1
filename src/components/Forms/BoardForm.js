@@ -20,8 +20,6 @@ export default function BoardForm({ user, formTitle, setBoards }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     createBoard(board, user.uid).then(setBoards);
-    // above console.warn to be setBoard when board cards can be READ
-    // boards with uids are printing to Firebase
   };
 
   return (
@@ -40,7 +38,7 @@ export default function BoardForm({ user, formTitle, setBoards }) {
           onChange={handleInputChange}
         >
         </input>
-        <label>Image URL</label>
+        <label>Image URL:</label>
         <input
           name='imageUrl'
           type='url'

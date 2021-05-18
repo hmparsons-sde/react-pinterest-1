@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
-import BoardCard from '../components/Cards/BoardCard';
 import BoardForm from '../components/Forms/BoardForm';
+import BoardCard from '../components/Cards/BoardCard';
 
 const BoardContainer = styled.div`
   display: flex;
@@ -15,6 +15,11 @@ const BoardContainer = styled.div`
 function BoardsView({
   setPins, user, boards, setBoards
 }) {
+  const [showButton, setShowButton] = useState(false);
+  const handleClick = () => {
+    setShowButton((prevState) => !prevState);
+  };
+
   return (
     <>
       <section className="header mt-2">
