@@ -18,15 +18,6 @@ const boardsAndPins = (boardId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// SHOW PINS & BOARDS IN SEARCH RESULTS
-// const searchBoardsPins = (uid, searchValue) => new Promise((resolve, reject) => {
-//   const pin = searchPins(uid, searchValue);
-//   const board = searchBoards(uid, searchValue);
-//   Promise.all([pin, board])
-//     .then(([pinResponse, boardResponse]) => resolve({ pin: pinResponse, board: boardResponse }))
-//     .catch((error) => reject(error));
-// });
-
 export {
   boardsAndPins,
   deleteBoardsPins,

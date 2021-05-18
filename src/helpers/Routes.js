@@ -5,6 +5,7 @@ import Home from '../views/Home';
 import Boards from '../views/Boards';
 import Favorites from '../views/Favorites';
 import Pins from '../views/Pins';
+import SingleBoardView from '../views/SingleBoard';
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   const routeChecker = (taco) => (user
@@ -19,7 +20,7 @@ PrivateRoute.propTypes = {
 };
 
 export default function Routes({
-  user, boards, setBoards, pins, setPins, favorites, setFavorites
+  user, boards, setBoards, pins, setPins
 }) {
   return (
     <div>
@@ -31,6 +32,11 @@ export default function Routes({
           component={() => <Boards boards={boards} setBoards={setBoards} user={user}/>}
         />
         <PrivateRoute
+        exact path='/boards/:id'
+        user={user}
+        component={() => <SingleBoardView user={user}/>}
+      />
+        <PrivateRoute
           exact path='/pins'
           user={user}
           component={() => <Pins pins={pins} setPins={setPins} user={user} boards={boards} setBoards={setBoards}/>}
@@ -38,7 +44,12 @@ export default function Routes({
         <PrivateRoute
           exact path='/favorites'
           user={user}
-          component={() => <Favorites favorites={favorites} setFavorites={setFavorites} user={user}/>}
+          component={() => <Favorites user={user}/>}
+        />
+        <PrivateRoute
+          path='/boards/:id'
+          user={user}
+          component={() => <SingleBoardView user={user}/>}
         />
       </Switch>
     </div>
@@ -50,7 +61,5 @@ Routes.propTypes = {
   setBoards: PropTypes.func,
   pins: PropTypes.array,
   setPins: PropTypes.func,
-  favorites: PropTypes.array,
-  setFavorites: PropTypes.func,
   user: PropTypes.any
 };

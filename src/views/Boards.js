@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Button } from 'reactstrap';
-import BoardCard from '../components/Cards/BoardCard';
 import BoardForm from '../components/Forms/BoardForm';
+import BoardCard from '../components/Cards/BoardCard';
+
+const BoardContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 5%;
+`;
 
 function BoardsView({
-  user,
-  boards,
-  setBoards,
-  setPins
+  setPins, user, boards, setBoards
 }) {
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
@@ -17,19 +22,21 @@ function BoardsView({
 
   return (
     <>
-      <section className="header">
-       { !showButton
-         ? <Button className="m-3" color='danger' onClick={handleClick}>Add Board</Button>
-         : <div>
-              <div className="close-btn">
-                <Button className="m-3" color='secondary' onClick={handleClick}>Close</Button>
-              </div>
-            <BoardForm className="justify-content-center mt-3" setBoards={setBoards} user={user}/>
-          </div>
-       }
+      <section className="header mt-2">
+      { !showButton
+        ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add Board</Button>
+        : <div>
+        <Button className="m-2 btn-lg" color='secondary' onClick={handleClick}>Close</Button>
+          <BoardForm className="justify-content-center mt-3" setBoards={setBoards} user={user} boards={boards}/>
+        </div>
+        }
       </section>
-
-      <div className="card-container" id="board-cards">
+      {boards.length === 0
+        && <h3 className="text-center mt-2">
+            Nothing here! Create something!
+          </h3>
+      }
+      <BoardContainer className="card-container" id="board-cards">
         {boards.map((boardInfo) => (
           <BoardCard
             key={boardInfo.firebaseKey}
@@ -41,7 +48,7 @@ function BoardsView({
             setPins={setPins}
           />
         ))}
-      </div>
+      </BoardContainer>
     </>
   );
 }

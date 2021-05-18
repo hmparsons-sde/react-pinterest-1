@@ -18,22 +18,18 @@
   justify-content: center;
   margin-top: 5%;
 
-    .card {
-      width: 375px;
-      height: auto;
-      margin: 15px;
-      box-shadow: 50px;
-    }
+  .card {
+    width: 300px;
+    margin: 15px;
+    height: auto;
+    box-shadow: 50px;
+  }
+  
+}
 
-    .card-body {
-      flex: none;
-      text-align: center;
-      padding: 0;
-    }
-
-    #boardImg {
-      width: 100%;
-      object-fit: fill;
-      max-height: 275px;
-    }
+#cardImg {
+  height: auto;
+  width: 100%;
+  object-fit: fill;
+  margin: 5px
 }

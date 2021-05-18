@@ -30,7 +30,6 @@ const createPin = (pinObject, uid) => new Promise((resolve, reject) => {
         .then(() => {
           getPins(uid).then((pinsArray) => resolve(pinsArray));
         });
-      console.warn(response.data.name);
     }).catch((error) => reject(error));
 });
 // RETRIEVE A SINGLE PIN IN ORDER TO EDIT/UPDATE
@@ -40,12 +39,12 @@ const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 // SPEAKING OF... UPDATE A PIN'S INFO IN REAL TIME
-const updatePin = (pinObject) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/pins/${pinObject.firebaseKey}.json`, pinObject).then(() => {
-    getPins(firebase.auth().currentUser.uid)
-      .then((pinsArray) => resolve(pinsArray))
-      .catch((error) => reject(error));
-  });
+const updatePin = (pinObject, firebaseKey) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/pins/${firebaseKey}.json`, pinObject)
+    .then(() => {
+      getPins(firebase.auth().currentUser.uid).then((pinsArray) => resolve(pinsArray))
+        .catch((error) => reject(error));
+    });
 });
 // GET PINS THAT BELONG TO SINGLE BOARD
 const getBoardPins = (boardId) => new Promise((resolve, reject) => {
@@ -55,6 +54,7 @@ const getBoardPins = (boardId) => new Promise((resolve, reject) => {
 });
 // GET PINS WITH FAVORITE BOOLEAN EQUAL TO TRUE
 const getFavoritePins = () => new Promise((resolve, reject) => {
+  // Are you getting the correct data back from this call? -- YES
   axios.get(`${dbUrl}/pins.json?orderBy="favorite"&equalTo=true`)
     .then((response) => {
       const favoritePinsArray = Object.values(response.data);
@@ -68,18 +68,6 @@ const searchPins = (uid, searchValue) => new Promise((resolve, reject) => {
   })
     .catch((error) => reject(error));
 });
-// PUBLIC PINS
-const getPublicPins = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/pins.json?orderBy="public"&equalTo=true`)
-    .then((response) => resolve(Object.values(response.data)))
-    .catch((error) => reject(error));
-});
-// ADD PUBLIC PINS
-const addPublicPin = (firebaseKey, pinObject) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/pins/${firebaseKey}.json`, pinObject)
-    .then(() => getPublicPins().then((pinsArray) => resolve(pinsArray)))
-    .catch((error) => reject(error));
-});
 
 export {
   getPins,
@@ -89,7 +77,5 @@ export {
   updatePin,
   getBoardPins,
   getFavoritePins,
-  searchPins,
-  addPublicPin,
-  getPublicPins
+  searchPins
 };

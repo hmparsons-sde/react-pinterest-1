@@ -19,7 +19,7 @@ export default function BoardForm({ user, formTitle, setBoards }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createBoard(board, user.uid).then((boardsArray) => setBoards(boardsArray));
+    createBoard(board, user.uid).then(setBoards);
   };
 
   return (
