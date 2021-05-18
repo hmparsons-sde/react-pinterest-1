@@ -27,9 +27,9 @@ export default function PinForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (pin.firebaseKey) {
-      updatePin(pin, user.uid).then((pinsArray) => setPin(pinsArray));
+      updatePin(pin).then((pinsArray) => setPin(pinsArray));
     } else {
-      createPin(pin, user.uid).then((pinsArray) => setPins(pinsArray));
+      createPin(pin).then((pinsArray) => setPins(pinsArray));
     }
   };
   return (
