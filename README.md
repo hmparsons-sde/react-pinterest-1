@@ -5,10 +5,10 @@ Overview of the project:
 This project is a close to reality Pinterest site that allows users to view created boards and pins. Users are able toview their own additions as well as update and delete boards and pins.
 
 Link to your wireframes/prototype:
-Holly add link
+https://bit.ly/3hyZad1
 
 Link to the deployed project:
-Netlify
+https://e14-react-pinterest.netlify.app/
 
 Link to your project board:
 https://github.com/lindseysatterfield/react-pinterest/projects/1
