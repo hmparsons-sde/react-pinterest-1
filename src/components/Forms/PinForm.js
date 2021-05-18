@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Button, Form, Input, Label
 } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 import { createPin, updatePin } from '../../helpers/data/PinsData';
 
 export default function PinForm({
@@ -22,26 +23,31 @@ export default function PinForm({
       ...prevState,
       [e.target.name]: e.target.name === 'favorite' ? e.target.checked : e.target.value
     }));
+    console.warn(pin);
   };
+
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (pin.firebaseKey) {
-      updatePin(pin).then((pinsArray) => setPin(pinsArray));
+      updatePin(pin, user).then(setPins);
     } else {
-      createPin(pin).then((pinsArray) => setPins(pinsArray));
+      createPin(pin, user).then(setPins);
+      history.push('pins');
     }
   };
   return (
     <div className="pin-form-container">
       <Form className="add-pin-form" autoComplete="off">
-        <h1>{formTitle}</h1>
+        <h4 className="mt-4 text-center mb-2">{formTitle}</h4>
         <Input
           name="title"
           type="text"
           placeholder="Title"
           value={pin.title}
           onChange={handleInputChange}
+          className="mt-2"
         ></Input>
         <br></br>
         <Input
@@ -50,10 +56,9 @@ export default function PinForm({
           placeholder="Image URL"
           value={pin.imageUrl}
           onChange={handleInputChange}
-          className="mt-2"
+          className="mt-1"
         ></Input>
         <br></br>
-        <Label for="exampleSelect">Select Board</Label>
         <Input
           type="select"
           name="boardId"
@@ -73,15 +78,15 @@ export default function PinForm({
           type="checkbox"
           checked={pin.favorite}
           onChange={handleInputChange}
-          className="mt-2"
+          className="ml-2 align-self-center text-center"
         ></Input>
-        <Label> Favorite </Label>
+        <Label className="ml-4 text-center"> Favorite </Label>
         <br></br>
         <Button
           color="danger"
           type="submit"
           onClick={handleSubmit}
-          className="mt-4"
+          className="mt-2 ml-1"
         >
           Submit
         </Button>

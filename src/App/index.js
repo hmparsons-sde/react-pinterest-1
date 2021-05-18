@@ -33,7 +33,7 @@ function App() {
   return (
     <div className='App'>
       <Router>
-        <NavBar user={user} />
+        <NavBar user={user} setPins={setPins}/>
         <Routes
         boards={boards}
         setBoards={setBoards}

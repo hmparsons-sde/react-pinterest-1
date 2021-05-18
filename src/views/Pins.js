@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import PinCard from '../components/Cards/PinCard';
 import PinForm from '../components/Forms/PinForm';
 
+const PinContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 5%;
+`;
 export default function PinView({
   user, pins, setPins, boards
 }) {
@@ -13,16 +20,21 @@ export default function PinView({
   };
   return (
     <>
-    <section className="header mt-2">
-      { !showButton
-        ? <Button className="m-2" color='danger' onClick={handleClick}>Add Pin</Button>
-        : <div>
-        <Button className="m-2" color='secondary' onClick={handleClick}>Close</Button>
-          <PinForm className="justify-content-center mt-3" setPins={setPins} user={user} boards={boards}/>
-        </div>
+      <section className="header mt-2">
+        { !showButton
+          ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add Pin</Button>
+          : <div>
+          <Button className="m-2 btn-lg" color='secondary' onClick={handleClick}>Close</Button>
+            <PinForm className="justify-content-center mt-3" setPins={setPins} user={user} boards={boards}/>
+          </div>
+          }
+        </section>;
+        {pins.length === 0
+        && <h3 className="text-center mt-2">
+            Nothing here! Create something!
+          </h3>
         }
-      </section>
-      <div className="card-container align-content-center" id="pin-cards">
+        <PinContainer className="card-container align-content-center" id="pin-cards">
         {pins.map((pin) => (
           <PinCard
             key={pin.firebaseKey}
@@ -32,7 +44,7 @@ export default function PinView({
             {...pin}
           />
         ))}
-      </div>
+      </PinContainer>
      </>
   );
 }

@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Button } from 'reactstrap';
 import BoardCard from '../components/Cards/BoardCard';
 import BoardForm from '../components/Forms/BoardForm';
+
+const BoardContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 5%;
+`;
 
 function BoardsView({
   setPins, user, boards, setBoards
 }) {
   return (
     <>
-      <div className="card-container" id="board-cards">
+      <section className="header mt-2">
+      { !showButton
+        ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add Board</Button>
+        : <div>
+        <Button className="m-2 btn-lg" color='secondary' onClick={handleClick}>Close</Button>
+          <BoardForm className="justify-content-center mt-3" setBoards={setBoards} user={user} boards={boards}/>
+        </div>
+        }
+      </section>
+      {boards.length === 0
+        && <h3 className="text-center mt-2">
+            Nothing here! Create something!
+          </h3>
+      }
+      <BoardContainer className="card-container" id="board-cards">
         {boards.map((boardInfo) => (
           <BoardCard
             key={boardInfo.firebaseKey}
@@ -18,17 +41,9 @@ function BoardsView({
             user={user}
             setBoards={setBoards}
             setPins={setPins}
-            // {...boards}
           />
         ))}
-      </div>
-      <div>
-      <h1>Boards</h1>
-      <BoardForm
-        user={user}
-        formTitle='Add a Board'
-      />
-    </div>
+      </BoardContainer>
     </>
   );
 }

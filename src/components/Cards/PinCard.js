@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import { deletePin } from '../../helpers/data/PinsData';
 import PinForm from '../Forms/PinForm';
+
+const PinnedItem = styled.div`
+  width: 300px;
+  height: auto;
+  margin: 15px;
+  box-shadow: 50px;
+`;
+
+const PinLink = styled.div`
+  text-decoration: none;
+  color: black;
+`;
 
 const PinCard = ({
   imageUrl,
@@ -12,7 +25,8 @@ const PinCard = ({
   user,
   setPins,
   boardId,
-  boards
+  boards,
+  url
 }) => {
   const [updating, setUpdating] = useState(false);
 
@@ -31,11 +45,13 @@ const PinCard = ({
   };
 
   return (
-    <div className='card m-2 outline-dark'>
-      <img className='card-img-top' id="pinImg" src={imageUrl} alt="pin cover photo"></img>
+    <PinnedItem className='card' key={firebaseKey}>
+      <img id="pinImg" src={imageUrl} alt="pin cover photo"></img>
       <div className='card-body'>
-      <h5 tag="h5" className="mt-2">{title}</h5>
-      <div className='btn-group-md justify-content-between mb-2'>
+      <PinLink>
+        <h5 tag="h5" className="mt-1"><a href={url} className="card-link mt-2">{title}</a></h5>
+      </PinLink>
+      <div className='btn-group-md justify-content-between'>
       <p className='card-text'>{favorite ? '❤️' : ''}</p>
       <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt"></i></Button>
       <Button className='btn-md p-2 ml-1' color="danger" onClick={() => handleClick('update')}>
@@ -55,13 +71,13 @@ const PinCard = ({
         />
       }
     </div>
-  </div>
+  </PinnedItem>
   );
 };
 
 PinCard.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
+  title: PropTypes.string,
   favorite: PropTypes.bool,
   handleClick: PropTypes.func,
   firebaseKey: PropTypes.string,
@@ -69,6 +85,7 @@ PinCard.propTypes = {
   setPins: PropTypes.func,
   boardId: PropTypes.string,
   boards: PropTypes.array,
+  url: PropTypes.string
 };
 
 export default PinCard;
