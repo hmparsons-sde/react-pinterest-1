@@ -1,0 +1,23 @@
+#board-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 5%;
+  // width: 300px;
+  // margin: 5px;
+
+  .card {
+    width: 300px;
+    margin: 15px;
+    height: auto;
+    box-shadow: 50px;
+  }
+  
+}
+
+#cardImg {
+  height: auto;
+  width: 100%;
+  object-fit: fill;
+  margin: 5px
+}

@@ -5,7 +5,7 @@ import Home from '../views/Home';
 import Boards from '../views/Boards';
 import Favorites from '../views/Favorites';
 import Pins from '../views/Pins';
-import SingleBoard from '../views/SingleBoard';
+import SingleBoardView from '../views/SingleBoard';
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   const routeChecker = (taco) => (user
@@ -31,6 +31,11 @@ export default function Routes({
           user={user}
           component={() => <Boards boards={boards} setBoards={setBoards} user={user}/>}
         />
+        <PrivateRoute
+        exact path='/boards/:id'
+        user={user}
+        component={() => <SingleBoardView user={user}/>}
+      />
         <PrivateRoute
           exact path='/pins'
           user={user}
