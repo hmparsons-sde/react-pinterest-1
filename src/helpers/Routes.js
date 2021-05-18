@@ -20,7 +20,7 @@ PrivateRoute.propTypes = {
 };
 
 export default function Routes({
-  user, boards, setBoards, pins, setPins, setBoardPin
+  user, boards, setBoards, pins, setPins
 }) {
   return (
     <div>
@@ -42,9 +42,9 @@ export default function Routes({
           component={() => <Favorites user={user}/>}
         />
         <PrivateRoute
-          path='/board/:id'
+          path='/boards/:id'
           user={user}
-          component={() => <SingleBoard setBoardPin={setBoardPin}/>}
+          component={() => <SingleBoard user={user}/>}
         />
       </Switch>
     </div>
@@ -56,6 +56,5 @@ Routes.propTypes = {
   setBoards: PropTypes.func,
   pins: PropTypes.array,
   setPins: PropTypes.func,
-  user: PropTypes.any,
-  setBoardPin: PropTypes.func
+  user: PropTypes.any
 };

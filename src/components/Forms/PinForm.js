@@ -23,6 +23,7 @@ export default function PinForm({
       ...prevState,
       [e.target.name]: e.target.name === 'favorite' ? e.target.checked : e.target.value
     }));
+    console.warn(pin);
   };
 
   const history = useHistory();
