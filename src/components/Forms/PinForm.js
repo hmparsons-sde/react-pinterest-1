@@ -16,7 +16,7 @@ export default function PinForm({
     uid: user.uid,
     boardId: boardId || ''
   });
-
+  console.warn(pin);
   const handleInputChange = (e) => {
     setPin((prevState) => ({
       ...prevState,
@@ -32,7 +32,6 @@ export default function PinForm({
       createPin(pin, user.uid).then((pinsArray) => setPins(pinsArray));
     }
   };
-  console.warn(boards);
   return (
     <div className="pin-form-container">
       <Form className="add-pin-form" autoComplete="off">

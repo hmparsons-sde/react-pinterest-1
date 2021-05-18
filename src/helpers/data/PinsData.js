@@ -30,7 +30,6 @@ const createPin = (pinObject, uid) => new Promise((resolve, reject) => {
         .then(() => {
           getPins(uid).then((pinsArray) => resolve(pinsArray));
         });
-      console.warn(response.data.name);
     }).catch((error) => reject(error));
 });
 // RETRIEVE A SINGLE PIN IN ORDER TO EDIT/UPDATE
@@ -40,7 +39,7 @@ const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 // SPEAKING OF... UPDATE A PIN'S INFO IN REAL TIME
-const updatePin = (firebaseKey, pinObject) => new Promise((resolve, reject) => {
+const updatePin = (pinObject, firebaseKey) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/pins/${firebaseKey}.json`, pinObject)
     .then(() => {
       getPins(firebase.auth().currentUser.uid).then((pinsArray) => resolve(pinsArray))
@@ -49,7 +48,7 @@ const updatePin = (firebaseKey, pinObject) => new Promise((resolve, reject) => {
 });
 // GET PINS THAT BELONG TO SINGLE BOARD
 const getBoardPins = (boardId) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/pins.json?orderBy="board_id"&equalTo="${boardId}"`)
+  axios.get(`${dbUrl}/pins.json?orderBy="boardId"&equalTo="${boardId}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });

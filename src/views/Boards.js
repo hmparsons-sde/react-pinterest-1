@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import BoardCard from '../components/Cards/BoardCard';
 import BoardForm from '../components/Forms/BoardForm';
 
-function BoardsView({ user, boards, setBoards }) {
+function BoardsView({
+  setPins, user, boards, setBoards
+}) {
   return (
     <>
       <div className="card-container" id="board-cards">
@@ -15,6 +17,7 @@ function BoardsView({ user, boards, setBoards }) {
             title={boardInfo.title}
             user={user}
             setBoards={setBoards}
+            setPins={setPins}
             // {...boards}
           />
         ))}
@@ -33,7 +36,8 @@ function BoardsView({ user, boards, setBoards }) {
 BoardsView.propTypes = {
   boards: PropTypes.array.isRequired,
   setBoards: PropTypes.func.isRequired,
-  user: PropTypes.any
+  user: PropTypes.any,
+  setPins: PropTypes.func
 };
 
 export default BoardsView;

@@ -28,6 +28,7 @@ export default function PinView({
             key={pin.firebaseKey}
             user={user}
             setPins={setPins}
+            boards={boards}
             {...pin}
           />
         ))}

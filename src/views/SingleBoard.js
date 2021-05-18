@@ -1,28 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import getBoardPins from '../helpers/data/BoardPinsData';
 import PinCard from '../components/Cards/PinCard';
+import { boardsAndPins } from '../helpers/data/BoardPinsData';
+import { getBoards } from '../helpers/data/BoardsData';
 
-export default function SingleBoardView() {
-  const [board, setBoard] = useState({});
-  const { firebaseKey } = useParams();
-
+export default function SingleBoardView({ user }) {
+  const [boardPins, setBoardPins] = useState([]);
+  const [boards, setBoards] = useState([]);
+  const { id } = useParams();
   useEffect(() => {
-    getBoardPins(firebaseKey)
-      .then(setBoard);
-    // or .then((response) => setAuthor(response)); SAME THING AS ABOVE -SHORTHAND VERSION
+    boardsAndPins(id).then((response) => setBoardPins(response.pins));
+    getBoards(user.uid).then((response) => setBoards(response));
   }, []);
-
+  console.warn(boards);
   return (
     <div className="card-container align-content-center" id="pin-cards">
-        {pins.map((pin) => (
+        {boardPins.map((pin) => (
           <PinCard
             key={pin.firebaseKey}
+            pins={boardPins}
+            boardId={id}
+            boards={boards}
             user={user}
-            setPins={setPins}
             {...pin}
           />
         ))}
       </div>
   );
 }
+
+SingleBoardView.propTypes = {
+  user: PropTypes.any
+};
