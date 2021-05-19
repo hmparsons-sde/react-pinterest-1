@@ -42,7 +42,7 @@ As a user, I am able to login via Google authentication.
 
 
 #### Contributors
-[Nathan Keith](https://github.com/nashvegasnate)
-[Holly Parsons](https://github.com/hmparsons-sde)
-[Lindsey Satterfield](https://github.com/lindseysatterfield)
-[Tad Sekeres](https://github.com/tsekeres)
+- [Nathan Keith](https://github.com/nashvegasnate)
+- [Holly Parsons](https://github.com/hmparsons-sde)
+- [Lindsey Satterfield](https://github.com/lindseysatterfield)
+- [Tad Sekeres](https://github.com/tsekeres)
